@@ -1,0 +1,75 @@
+@font-face {
+    font-family: Merriweather;
+    src: local("view/src/font/Merriweather/Merriweather.woff");
+}
+.helvetica{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.merriweather{
+    font-family: Merriweather;
+}
+
+.cc-navbar{
+    background-color: rgba(0, 0, 0,.55);
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    box-shadow: 1px 1px 1px rgba(255, 255, 255, 0.54);
+    z-index: 99;
+}
+
+.cc-navbar .nav-link{
+    border-bottom: 1px solid transparent;
+    transition: padding-bottom .4s ease-in-out, border-color .3s ease;
+}
+
+.cc-navbar .nav-link:hover{
+    padding-bottom: 20px;
+    border-bottom-color: #d2657f;
+}
+.banner{
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../img/home/banner.jpg') center center fixed no-repeat;
+    background-size: cover;
+    height: 800px;
+}
+.banner-login{
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../img/home/banner.jpg') center center no-repeat ;
+    -webkit-background-size: cover;
+    background-size: cover;
+    height: 800px;
+
+}
+.banner-description{
+    font-size: 32px;
+    font-weight: 400;
+    color: #fff;
+}
+.cc-step{
+    background-color: #605f60;
+}
+.contact-form{
+    background: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)), url('../img/home/banner.jpg') center center fixed no-repeat;
+    background-size: cover;
+    height: 470px;
+}
+.btn-order{
+    color: #d2657f;
+    border-color: #d2657f;
+    transition: 0.5s;
+}
+.btn-order:hover,
+.btn-order:active{
+    color: #fff;
+    background-color: #d2657f;
+    border-color: #d2657f;
+}
+.cc-btn-info:hover,
+.cc-btn-info:active{
+    color: #fff;
+}
+.link-color{
+    color: #d2657f;
+}
+.link-color:hover,
+.link-color:active{
+    color: #ffffff;
+}

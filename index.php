@@ -15,19 +15,6 @@ ini_set("display_errors", 1);
  */
 error_reporting(E_ALL);
 
-/**
- * Permet d'ajouter un en-tête à la réponse
- *
- * @see https://www.php.net/manual/en/function.header.php
- */
-header("Content-Type: text/plain");
-
-/**
- * Modifier le code de statut de la réponse
- *
- * @see https://www.php.net/manual/en/function.http-response-code.php
- */
-http_response_code(200);
 
 /**
  * La route que l'utilisateur essaie de récupérer
@@ -43,16 +30,33 @@ $route = isset($_REQUEST["route"]) ? $_REQUEST["route"] : "";
  */
 $method = $_SERVER["REQUEST_METHOD"];
 
+if ($route === "home") {
+    include "./controllers/home.php";
+
+    if ($method === "GET") {
+        HomeController::get();
+        return;
+    }
+
+}
 if ($route === "login") {
     include "./controllers/login.php";
 
-    if ($method === "POST") {
-        LoginController::post();
+    if ($method === "GET") {
+        LoginController::get();
         return;
     }
 
-    if ($method === "DELETE") {
-        LoginController::delete();
+}
+if ($route === "register") {
+    include "./controllers/user.php";
+
+    if ($method === "GET") {
+        User::get();
         return;
     }
+
 }
+require "./controllers/home.php";
+HomeController::get();
+

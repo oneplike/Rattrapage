@@ -2,7 +2,7 @@
 
 class DatabaseSettings
 {
-    static $driver = "mariadb";
+    static $driver = "mysql";
     static $name = "u635527704_EAS";
     static $host = "212.107.17.103";
     static $user = "u635527704_reda";
@@ -19,7 +19,7 @@ class DatabaseSettings
         $host = DatabaseSettings::$host;
         $user = DatabaseSettings::$user;
         $password = DatabaseSettings::$password;
-
         return new PDO("$driver:dbname=$databaseName;host=$host", $user, $password, DatabaseSettings::$pdoSettings);
     }
 }
+//jdbc:mariadb://212.107.17.103:3306/u635527704_EAS
