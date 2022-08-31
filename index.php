@@ -15,6 +15,7 @@ ini_set("display_errors", 1);
  */
 error_reporting(E_ALL);
 
+http_response_code(200);
 
 /**
  * La route que l'utilisateur essaie de récupérer
@@ -29,6 +30,16 @@ $route = isset($_REQUEST["route"]) ? $_REQUEST["route"] : "";
  * @see https://www.php.net/manual/en/reserved.variables.server.php
  */
 $method = $_SERVER["REQUEST_METHOD"];
+
+if ($route === "") {
+    include "./controllers/home.php";
+
+    if ($method === "GET") {
+        HomeController::get();
+        return;
+    }
+
+}
 
 if ($route === "home") {
     include "./controllers/home.php";
@@ -57,6 +68,23 @@ if ($route === "register") {
     }
 
 }
-require "./controllers/home.php";
-HomeController::get();
+
+if ($route === "dashboard") {
+    include "./controllers/dash_user.php";
+
+    if ($method === "GET") {
+        UserDash::get();
+        return;
+    }
+
+}
+
+if ($route === "logout") {
+    include "./controllers/login.php";
+
+    if ($method === "GET") {
+        LoginController::logout();
+        return;
+    }
+}
 

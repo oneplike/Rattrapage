@@ -5,16 +5,18 @@ include "includes/header.php" ?>
     <section class="banner-login d-flex justify-content-center align-items-center">
         <div class="container align-content-center align-items-center justify-content-center">
             <h2 class=" row text-center text-light "> Connexion</h2>
-            <form class="row ">
+            <?php if(!empty($msg_error)){echo "<h5 class='alert alert-danger text-center' >$msg_error</h5>";  }?>
+            <?php if(!empty($msg_success)){echo "<h5 class='alert alert-success text-center' >$msg_success</h5>";  }?>
+            <form class="row " action="" method="POST" id="login_check" >
 
                 <div class="row mt-5">
                     <div class="col-md-4 text-light">
-                        <label for="validationDefault01" class="form-label">Email</label>
-                        <input type="email" class="form-control"  placeholder="exemple@easyscooters.fr" required>
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control"  placeholder="exemple@easyscooters.fr" required>
                     </div>
                     <div class="col-md-4 mb-2 text-light">
-                        <label for="validationDefault02" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" id="validationDefault02" required>
+                        <label class="form-label">Mot de passe</label>
+                        <input type="password" name="pwd" class="form-control"  required>
                     </div>
                     <span class="text-light mb-2">Pas encore inscrit ? <a class="link-color" href="register">S'inscrire</a></span>
                     <div class="col-12">
@@ -26,6 +28,7 @@ include "includes/header.php" ?>
     </section>
 
     <footer class="py-3">
+        <script src="view/src/js/check.js"></script>
         <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

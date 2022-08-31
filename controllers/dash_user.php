@@ -4,11 +4,12 @@ include "library/request.php";
 include "library/response.php";
 include __DIR__."/../models/user.php";
 
-class HomeController
+class UserDash
 {
     public static function get()
     {
-        include __DIR__ . "/../view/home.php";
+
+        include __DIR__ . "/../view/dash_user.php";
     }
 
 }

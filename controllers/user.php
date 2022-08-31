@@ -1,11 +1,6 @@
 <?php
 //condition si il est déjà connecter rediriger vers la page d'acceuil ! Sinon on continue
 include __DIR__."/../models/user.php";
-use PHPMailer\PHPMailer\PHPMailer;
-
-require_once "view/includes/phpmailer/Exception.php";
-require_once "view/includes/phpmailer/PHPMailer.php";
-require_once "view/includes/phpmailer/SMTP.php";
 
 if (isset($_POST["firstname"]) &&
     isset($_POST["lastname"]) &&
@@ -44,7 +39,7 @@ class User
     {
         $checkPhone = UserModel::checkMyPhone($phone);
         $checkEmail = UserModel::checkMyEmail($email);
-        $idUser = 0;
+        $check = 1;
         if (!empty($checkPhone)) {
             $msg_error = "Le numéro de téléphone est déjà utilisé !";
         } elseif (!empty($checkEmail)){
@@ -59,14 +54,15 @@ class User
                     "birth" => $birth,
                     "phone" => $phone,
                     "email" => $email,
-                    "pwd" => $pwd,
+                    "pwd" => password_hash($pwd, PASSWORD_BCRYPT),
                     "addr" => $addr,
                     "zipcode" => $zipcode,
                     "status_user" => $status,
+                    "check" => $check,
                     "token" => $token
                 ]
             );
-            $idUser = UserModel::getOneByToken($token);
+            $idUser = UserModel::getByToken($token);
             //Créations du mail
             //ra.no-reply@codelight.fr
             //mdp : Azertyuiop785.
@@ -75,16 +71,16 @@ class User
 
             $to = $email;
             $subject = "Activation de votre compte ";
-            $message="TON LIEN";
+            $message='Compte activé';
 
             $header = "Content-Type: text/plain; charset=utf-8\r\n";
             $header .= "From: ra.no-reply@codelight.fr\r\n";
-            if(mail($to, $subject, $message, $header)){
-                echo "mail envoyé";
-            }else{
-                echo "mail pas envoyé";
-            }
-            $msg_success = "Compte crée avec succès ! \n Un mail d'activation vous a été envoyé. $idUser";
+
+            mail($to, $subject, $message, $header);
+
+
+
+            $msg_success = "Compte crée avec succès ! \n Un mail d'activation vous a été envoyé.";
 
         }
         include __DIR__ . "/../view/register.php";
