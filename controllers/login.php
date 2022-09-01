@@ -1,8 +1,6 @@
 <?php
 //condition si il est déjà connecter rediriger vers la page d'acceuil ! Sinon on continue
 
-include "library/request.php";
-include "library/response.php";
 include __DIR__."/../models/user.php";
 require_once "controllers/auth.php";
 
@@ -60,6 +58,7 @@ class LoginController
         UserModel::updateOneById($user["idUser"], ["token" => $token]);
         session_start();
         $_SESSION['connect'] = 1;
+        $_SESSION['idUser'] = $user["idUser"];
         header('Location: dashboard');
     }
 }

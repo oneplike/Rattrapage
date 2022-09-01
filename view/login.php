@@ -1,8 +1,7 @@
 <?php
 $title = "Connexion";
 include "includes/header.php" ?>
-<body class="body-login">
-    <section class="banner-login d-flex justify-content-center align-items-center">
+    <section class="banner-login d-flex justify-content-center align-items-center helvetica">
         <div class="container align-content-center align-items-center justify-content-center">
             <h2 class=" row text-center text-light "> Connexion</h2>
             <?php if(!empty($msg_error)){echo "<h5 class='alert alert-danger text-center' >$msg_error</h5>";  }?>

@@ -1,7 +1,5 @@
 <?php
 
-include "library/request.php";
-include "library/response.php";
 include __DIR__."/../models/user.php";
 
 class HomeController

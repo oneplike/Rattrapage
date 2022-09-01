@@ -79,6 +79,43 @@ if ($route === "dashboard") {
 
 }
 
+if ($route === "lease") {
+    include "./controllers/lease.php";
+
+    if ($method === "GET") {
+        lease::get();
+        return;
+    }
+
+}
+
+if ($route === "running") {
+    include "./controllers/running.php";
+
+    if ($method === "GET") {
+        running::get();
+        return;
+    }
+}
+
+if ($route === "ride") {
+    include "./controllers/ride.php";
+
+    if ($method === "GET") {
+        ride::get();
+        return;
+    }
+}
+
+if ($route === "backoffice") {
+    include "./controllers/backoffice.php";
+
+    if ($method === "GET") {
+        Back::get();
+        return;
+    }
+}
+
 if ($route === "logout") {
     include "./controllers/login.php";
 

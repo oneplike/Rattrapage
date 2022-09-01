@@ -1,9 +1,45 @@
 <?php
 
-include __DIR__."/../database/settings.php";
+require_once __DIR__."/../database/settings.php";
 
 class UserModel
 {
+
+
+    public static function getAll()
+    {
+        $databaseConnection = DatabaseSettings::getConnection();
+        $query = $databaseConnection->query("SELECT * FROM users");
+        $users = $query->fetchAll();
+
+        return $users;
+    }
+
+    public static function countUser(): int
+    {
+        $databaseConnection = DatabaseSettings::getConnection();
+        $query = $databaseConnection->query("SELECT * FROM users");
+
+        $userrowcount = $query->rowCount();
+
+        return $userrowcount;
+    }
+
+    public static function deleteOne($user)
+    {
+
+        $databaseConnection = DatabaseSettings::getConnection();
+        $databaseConnection->prepare("DELETE FROM users WHERE idUser=?")->execute([$user]);
+
+    }
+
+    public static function gradeById($grade, $user)
+    {
+        $databaseConnection = DatabaseSettings::getConnection();
+        $databaseConnection->prepare("UPDATE users SET status_user=? WHERE idUser=?")->execute([$grade, $user]);
+
+    }
+
     public static function createOne($user)
     {
         $databaseConnection = DatabaseSettings::getConnection();
@@ -53,6 +89,22 @@ class UserModel
         $query->execute(
             [
                 "token" => $token
+            ]
+        );
+
+        $user = $query->fetch();
+
+        return $user;
+    }
+
+    public static function getOneById($idUser)
+    {
+        $databaseConnection = DatabaseSettings::getConnection();
+        $query = $databaseConnection->prepare("SELECT * FROM users WHERE idUser = :idUser");
+
+        $query->execute(
+            [
+                "idUser" => $idUser
             ]
         );
 

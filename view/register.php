@@ -1,8 +1,7 @@
 <?php
 $title = "Inscription";
 include "includes/header.php" ?>
-<body class="body-login helvetica">
-<section class="banner-login d-flex  col">
+<section class="banner-login d-flex  col helvetica">
     <div class="container ">
         <h2 class="helvetica pt-5 row text-light justify-content-center text-uppercase "> Inscription</h2>
         <?php if(!empty($msg_error)){echo "<h5 class='alert alert-danger text-center' >$msg_error</h5>";  }?>

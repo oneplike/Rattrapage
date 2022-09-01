@@ -1,6 +1,7 @@
 <?php
 //condition si il est déjà connecter rediriger vers la page d'acceuil ! Sinon on continue
 include __DIR__."/../models/user.php";
+require_once "controllers/auth.php";
 
 if (isset($_POST["firstname"]) &&
     isset($_POST["lastname"]) &&
@@ -31,6 +32,10 @@ class User
 {
     public static function get()
     {
+        if(isConnected()){
+            header('Location: dashboard');
+            exit();
+        }
 
         include __DIR__ . "/../view/register.php";
     }
